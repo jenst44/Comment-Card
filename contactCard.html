@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Contact Card</title>
+	<link rel="stylesheet" type="text/css" href="contactCard.css">
+	<script type="text/javascript" src='http://code.jquery.com/jquery-1.10.2.min.js'></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var i = 0;
+		$("#userButton").click(function(){
+			i++;
+			var fN = $("#firstName").val();
+			var lN = $("#lastName").val();
+			var d = $("#description").val();
+
+			$(".contactCards").append("<div id='"+i+"'class='card'><h2>"+fN+"</h2><h2>"+lN+"</h2><br><h6>Click For Description</h6><p class='hidden'>"+d+"</p></div>");
+
+			$(document).on('click', '#'+i, function(){
+				$(this).children().toggle();
+
+			});
+		});
+	});
+	</script>
+</head>
+<body>
+	<div class="window">
+		<div class="inputFields">	
+			<p>First Name: </p><textarea id="firstName" placeholder="First Name" type="input"></textarea><br>
+			<p>Last Name: </p><textarea id="lastName" placeholder="Last Name" type="input"></textarea><br>
+			<p>Description:</p><br>
+			<textarea id="description" placeholder="Description" type="input" size="140"></textarea><br>
+			<p id="userButton">Add User</p>
+
+		</div>
+		<div class="contactCards"></div>
+	</div>
+</body>
+</html>
